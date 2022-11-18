@@ -4,6 +4,12 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+const (
+	UPGRADER_CONN = iota
+)
+
+var Pool *Pool_t
+
 type Pool_t struct {
 	ID         uint
 	Clients    map[*Client_t]bool
@@ -28,4 +34,12 @@ type Message_t struct {
 	SendBy string
 	To     string
 	Msg    string
+}
+
+type UserJoin_t struct {
+	Msg string
+}
+
+type UserExit_t struct {
+	Msg string
 }
